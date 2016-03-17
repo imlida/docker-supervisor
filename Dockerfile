@@ -10,20 +10,16 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 
 RUN mkdir /var/run/sshd
 
-COPY run.sh /app/run.sh
-
-RUN chmod a+x /app/run.sh
-
 RUN echo 'root:root' | chpasswd
 
 RUN sed -ri 's/^PermitRootLogin\s+.*/PermitRootLogin yes/' /etc/ssh/sshd_config
 RUN sed -ri 's/UsePAM yes/#UsePAM yes/g' /etc/ssh/sshd_config
-#把supervisor加入到开机启动
-RUN sed -i 's/^exit 0/\sh \/app\/run.sh\nexit 0/' /etc/rc.local
 
-#supervisor开启web界面
-COPY inet_http_server.conf /etc/supervisor/conf.d/inet_http_server.conf
+#COPY inet_http_server.conf /etc/supervisor/conf.d/inet_http_server.conf
 
-EXPOSE 22 9001
+COPY run /app/run
+RUN chmod a+x /app/run
 
-CMD ["/usr/sbin/sshd","-D"]
+EXPOSE 22 9901
+
+CMD ["/app/run"]
