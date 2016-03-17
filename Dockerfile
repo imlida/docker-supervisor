@@ -15,7 +15,7 @@ RUN echo 'root:root' | chpasswd
 RUN sed -ri 's/^PermitRootLogin\s+.*/PermitRootLogin yes/' /etc/ssh/sshd_config
 RUN sed -ri 's/UsePAM yes/#UsePAM yes/g' /etc/ssh/sshd_config
 
-#COPY inet_http_server.conf /etc/supervisor/conf.d/inet_http_server.conf
+COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
 COPY run /app/run
 RUN chmod a+x /app/run
