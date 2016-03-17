@@ -12,6 +12,8 @@ RUN mkdir /var/run/sshd
 
 COPY run.sh /app/run.sh
 
+RUN chmod a+x /app/run.sh
+
 RUN echo 'root:root' | chpasswd
 
 RUN sed -ri 's/^PermitRootLogin\s+.*/PermitRootLogin yes/' /etc/ssh/sshd_config
