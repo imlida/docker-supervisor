@@ -23,4 +23,4 @@ RUN echo 'root:root' | chpasswd
 
 EXPOSE 22 9001
 
-CMD /app/run
+CMD /usr/sbin/sshd -D && /usr/bin/supervisord -c /etc/supervisor/supervisord.conf
