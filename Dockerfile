@@ -20,6 +20,6 @@ RUN sed -ri 's/UsePAM yes/#UsePAM yes/g' /etc/ssh/sshd_config
 COPY run /app/run
 RUN chmod a+x /app/run
 
-EXPOSE 22 9901
+EXPOSE 22 9001
 
-CMD ["/app/run"]
+CMD ["/bin/bash", "/app/run"]

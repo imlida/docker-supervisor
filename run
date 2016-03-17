@@ -1,7 +1,3 @@
 #!/bin/bash
-main () {
-  /usr/sbin/sshd -D;
-  /usr/bin/supervisord -c /etc/supervisor/supervisord.conf;
-}
-
-main
+/usr/sbin/sshd -D
+/usr/bin/supervisord -c /etc/supervisor/supervisord.conf
