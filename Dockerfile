@@ -22,4 +22,4 @@ RUN chmod a+x /app/run
 
 EXPOSE 22 9001
 
-CMD ["/bin/bash", "/app/run"]
+CMD ["/app/run"]
