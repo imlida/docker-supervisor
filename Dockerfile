@@ -19,8 +19,8 @@ CMD ["/usr/sbin/sshd","-D"]
 
 COPY inet_http_server.conf /etc/supervisor/conf.d/inet_http_server.conf
 
-#EXPOSE 9001
+EXPOSE 9001
 
-#CMD ["/usr/bin/supervisord","-c","/etc/supervisor/supervisord.conf"]
+CMD ["/usr/bin/supervisord","-c","/etc/supervisor/supervisord.conf"]
 
 RUN echo 'root:root' | chpasswd
