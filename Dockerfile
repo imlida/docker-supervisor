@@ -13,14 +13,14 @@ RUN mkdir /var/run/sshd
 RUN sed -ri 's/^PermitRootLogin\s+.*/PermitRootLogin yes/' /etc/ssh/sshd_config
 RUN sed -ri 's/UsePAM yes/#UsePAM yes/g' /etc/ssh/sshd_config
 
-EXPOSE 22
-
-CMD ["/usr/sbin/sshd","-D"]
-
 COPY inet_http_server.conf /etc/supervisor/conf.d/inet_http_server.conf
 
-EXPOSE 9001
+COPY run /app/run
 
-#CMD ["/usr/bin/supervisord","-c","/etc/supervisor/supervisord.conf"]
+RUN chmod a+x /app/run
 
 RUN echo 'root:root' | chpasswd
+
+EXPOSE 22 9001
+
+CMD ["/app/run"]
