@@ -23,4 +23,4 @@ RUN echo 'root:root' | chpasswd
 
 EXPOSE 22 9001
 
-CMD ["/app/run"]
+CMD /app/run
