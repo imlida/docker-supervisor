@@ -15,12 +15,10 @@ RUN sed -ri 's/UsePAM yes/#UsePAM yes/g' /etc/ssh/sshd_config
 
 COPY inet_http_server.conf /etc/supervisor/conf.d/inet_http_server.conf
 
-COPY run /app/run
-
-RUN chmod a+x /app/run
+RUN ["/usr/bin/supervisord","-c","/etc/supervisor/supervisord.conf"]
 
 RUN echo 'root:root' | chpasswd
 
 EXPOSE 22 9001
 
-CMD ["/app/run"]
+CMD ["/usr/sbin/sshd","-D"]
