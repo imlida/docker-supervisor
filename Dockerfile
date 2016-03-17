@@ -15,7 +15,7 @@ RUN echo 'root:root' | chpasswd
 RUN sed -ri 's/^PermitRootLogin\s+.*/PermitRootLogin yes/' /etc/ssh/sshd_config
 RUN sed -ri 's/UsePAM yes/#UsePAM yes/g' /etc/ssh/sshd_config
 #把supervisor加入到开机启动
-RUN sed -i 's/^exit 0/\/usr\/bin\/supervisord -c \/etc\/supervisor\/supervisord.conf \nexit 0/' /etc/rc.local
+RUN sed -i 's/^exit 0/\/usr\/bin\/supervisord -c \/etc\/supervisor\/supervisord.conf/' /etc/rc.local
 
 #supervisor开启web界面
 COPY inet_http_server.conf /etc/supervisor/conf.d/inet_http_server.conf
