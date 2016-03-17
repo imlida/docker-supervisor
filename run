@@ -1,4 +1,4 @@
 #!/bin/sh
 
 exec /usr/sbin/sshd -D
-exec /usr/bin/supervisord -c /etc/supervisor/supervisord.conf
+exec python /usr/bin/supervisord -c /etc/supervisor/supervisord.conf
