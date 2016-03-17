@@ -17,7 +17,7 @@ EXPOSE 22
 
 CMD ["/usr/sbin/sshd","-D"]
 
-COPY inet_http_server.conf /etc/supervisor/conf.d/inet_http_server.conf
+#COPY inet_http_server.conf /etc/supervisor/conf.d/inet_http_server.conf
 
 EXPOSE 9001
 
