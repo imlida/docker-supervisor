@@ -1,4 +1,4 @@
 #!/bin/bash
 /usr/sbin/sshd &
-/etc/init.d/supervisor start
+/usr/bin/supervisord -c /alidata/supervisor/supervisord.conf
 

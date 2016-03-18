@@ -5,6 +5,7 @@ RUN sed -i 's/archive.ubuntu.com/mirrors.aliyun.com/' /etc/apt/sources.list
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
         openssh-server \
+		git \
 		supervisor \
     && rm -rf /var/lib/apt/lists/*
 
@@ -12,7 +13,7 @@ RUN mkdir /var/run/sshd
 
 RUN echo 'root:root' | chpasswd
 
-COPY supervisord.conf /etc/supervisor/supervisord.conf
+COPY supervisord.conf /alidata/supervisor/supervisord.conf
 
 COPY run /app/run
 RUN chmod a+x /app/run
